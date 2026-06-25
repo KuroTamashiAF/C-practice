@@ -21,16 +21,30 @@ int main()
             copy(longest, line);
         }
         if (max > 0) /*была ли хоть 1 строка */
-            printf("%s ", longest);
-        
+            printf("\n %s - %d \n", longest, max);
     }
     return 0;
 }
 /* getline: читает строку в s, возвращает длину */
-int getline(char line[])
+int getline(char s[])
 {
+    int c, i;
+    i = 0;
+    while ((c = getchar()) != EOF && c != '\n' && c != '\0')
+    // for (i = 0; i < MAXLINE - 1 && (c = getchar()) != EOF && c != '\n'; ++i)
+    {
+        if (i < MAXLINE)
+            s[i] = c;
+        ++i;
+    }
+    return i;
 }
+
 /* copy: копирует из 'from' в 'to'; to достаточно большой */
 void copy(char to[], char from[])
 {
+    int i;
+    i = 0;
+    while ((to[i] = from[i]) != '\0')
+        ++i;
 }
