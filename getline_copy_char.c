@@ -20,9 +20,9 @@ int main()
             max = len;
             copy(longest, line);
         }
-        if (max > 0) /*была ли хоть 1 строка */
-            printf("\n %s - %d \n", longest, max);
     }
+    if (max > 0) /*была ли хоть 1 строка */
+        printf("\n %s - %d \n", longest, max);
     return 0;
 }
 /* getline: читает строку в s, возвращает длину */
@@ -30,13 +30,23 @@ int getline(char s[])
 {
     int c, i;
     i = 0;
-    while ((c = getchar()) != EOF && c != '\n' && c != '\0')
-    // for (i = 0; i < MAXLINE - 1 && (c = getchar()) != EOF && c != '\n'; ++i)
+    while ((c = getchar()) != EOF && c != '\n')
     {
-        if (i < MAXLINE)
+        if (i < MAXLINE - 1)
+        {
             s[i] = c;
-        ++i;
+            ++i;
+        }
+        else
+            i++;
     }
+    if (c == '\n')
+    {
+        s[i] = c;
+        i++;
+    }
+
+    s[i] = '\0';
     return i;
 }
 
